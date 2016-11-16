@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="inherited_course_view_from_openacademy_course">
+			<field name="name">course.form</field>
+			<field name="model">openacademy.course</field>
+			<field name="inherit_id" ref="openacademytest.course_form_view" />
+			<field name="arch" type="xml">
+				<xpath expr="//form/sheet/group/field[@name='description']" position="before"> 
+					<field name="start_date" string="Start Date"/>
+					<field name="end_date" string="End Date"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>

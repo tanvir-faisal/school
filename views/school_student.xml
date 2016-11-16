@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>        
+        <record model="ir.ui.view" id="student_form_view">
+            <field name="name">student.form</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <form string="Student Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="contact_no"/>
+                            <field name="address"/>
+                            <field name="date_of_birth"/>
+                            <field name="email"/>
+                            <field name="gender"/>
+                            <field name="responsible_id"/>
+                            <field name="course_id" attrs="{'invisible': [('responsible_id','=', False)]}" domain="[('responsible_id', '=', responsible_id)]"/>
+                            <field name="subject"/>
+                            <field name="total_marks"/>
+                            <field name="average_marks"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="student_tree_view">
+			<field name="name">student.tree</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+            	<tree string="Student tree" default_order="name desc">
+                	<field name="name"/>
+                    <field name="contact_no"/>
+                    <field name="address"/>
+                    <field name="date_of_birth"/>
+					<field name="email"/>
+                    <field name="gender"/>
+                    <field name="responsible_id"/>
+                    <field name="course_id"/>
+                    <field name="subject"/>
+					<field name="total_marks"/>
+                    <field name="average_marks"/>
+                </tree>
+            </field>
+         </record>
+         
+         <!-- <record model="ir.ui.view" id="session_search_view">
+            <field name="name">session.search</field>
+            <field name="model">openacademy.session</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="course_id"/>
+                    <filter name="session_startdate" string="Today" domain="[('start_date', '&lt;', time.strftime('%Y-%m-%d'))]"/> 
+                    <group string="Group By">
+                        <filter name="group_name" string="Group By Name" context="{'group_by': 'name'}"/>
+                    </group>       
+                </search>
+            </field>
+        </record> -->
+        
+        <record model="ir.actions.act_window" id="student_list_action">
+            <field name="name">Students</field>
+            <field name="res_model">school.student</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Student
+                </p>
+            </field>
+        </record>
+        
+        <menuitem id="main_school_menu" name="School"/>
+        <menuitem id="school_menu" name="School" parent="main_school_menu"/>
+        <menuitem id="student_menu" name="Students" parent="school_menu" action="student_list_action"/>
+	</data>
+</openerp>

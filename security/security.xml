@@ -1,0 +1,16 @@
+<openerp>
+    <data>
+    	<record id="module_category_school" model="ir.module.category" >
+           <field name="name">School</field>
+           <field name="sequence">90</field>
+       </record>
+        <record id="school_group_manager" model="res.groups">
+            <field name="name">School / Manager</field>
+            <field name="category_id" ref="module_category_school"/>
+        </record>
+        <record id="school_group_user" model="res.groups">
+            <field name="name">School / User</field>
+            <field name="category_id" ref="module_category_school"/>
+        </record>
+    </data>
+</openerp>

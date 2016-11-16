@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="inherited_session_view_from_openacademy_session">
+			<field name="name">session.form</field>
+            <field name="model">openacademy.session</field>
+			<field name="inherit_id" ref="openacademytest.session_form_view"/>
+			<field name="arch" type="xml">
+				<xpath expr="//form/sheet/group/field[@name='course_id']" position="before"> 
+					<field name="instructor_id" string="Instructor Name"/>
+					<field name="taken_seats" string="Seats Taken" widget="progressbar"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>
